@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="SignUpViewModel"
+            type="com.africogram.www.viewmodels.SignUpViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg_app_color"
+        tools:context=".ui.fragments.SignUpFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/signUpMainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/sign_up_left_margin"
+            android:paddingLeft="@dimen/sign_up_left_margin"
+            android:paddingTop="16dp"
+            android:paddingEnd="@dimen/sign_up_right_margin"
+            android:paddingRight="@dimen/sign_up_right_margin"
+            android:paddingBottom="16dp">
+
+            <!-- Main header -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/semiHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/lato_medium"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/sign_up_for_africogram_head_text"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sign_up_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/semiHead">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sign_up_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/main_bg_app_color">
+
+                    <!-- First name -->
+                    <EditText
+                        android:id="@+id/first_name_edt"
+                        style="@style/EditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="none"
+                        android:background="@color/white"
+                        android:hint="@string/first_name_edt_text"
+                        android:inputType="textPersonName"
+                        app:layout_constraintEnd_toEndOf="@id/sign_up_layout"
+                        app:layout_constraintStart_toStartOf="@id/sign_up_layout"
+                        app:layout_constraintTop_toTopOf="@id/sign_up_layout" />
+
+                    <!-- Last name-->
+                    <EditText
+                        android:id="@+id/last_name_edt"
+                        style="@style/EditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:autofillHints="none"
+                        android:background="@color/white"
+                        android:hint="@string/last_name_edt_text"
+                        android:inputType="textPersonName"
+                        app:layout_constraintTop_toBottomOf="@id/first_name_edt" />
+
+                    <!-- Email -->
+                    <EditText
+                        android:id="@+id/email_edt"
+                        style="@style/EditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:autofillHints="none"
+                        android:background="@color/white"
+                        android:hint="@string/email_edit_text"
+                        android:inputType="textEmailAddress"
+                        app:layout_constraintTop_toBottomOf="@id/last_name_edt" />
+
+                    <!-- Password -->
+                    <EditText
+                        android:id="@+id/password_edt"
+                        style="@style/EditTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:autofillHints="none"
+                        android:background="@color/white"
+                        android:hint="@string/password_edit_text"
+                        android:inputType="textPassword"
+                        app:layout_constraintTop_toBottomOf="@id/email_edt" />
+
+                    <TextView
+                        android:id="@+id/birthdayTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/birthday_text"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:textColor="@color/about_content_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/sign_up_layout"
+                        app:layout_constraintTop_toBottomOf="@id/password_edt" />
+
+                    <LinearLayout
+                        android:id="@+id/birthdayInputBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@id/birthdayTv">
+
+                        <!-- birth month -->
+                        <EditText
+                            android:id="@+id/birth_month_edt"
+                            style="@style/EditTextTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_weight="1"
+                            android:background="@color/white"
+                            android:hint="@string/birth_month_edt_text"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            app:layout_constraintTop_toBottomOf="@id/first_name_edt" />
+
+                        <!-- birth day -->
+                        <EditText
+                            android:id="@+id/birth_day_edt"
+                            style="@style/EditTextTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_weight="1"
+                            android:autofillHints="no"
+                            android:background="@color/white"
+                            android:hint="@string/birthday_edt_text"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            app:layout_constraintTop_toBottomOf="@id/first_name_edt" />
+
+                        <!-- birth year -->
+                        <EditText
+                            android:id="@+id/birth_year_edt"
+                            style="@style/EditTextTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_weight="1"
+                            android:autofillHints="none"
+                            android:background="@color/white"
+                            android:hint="@string/birth_year_edt_text"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            app:layout_constraintTop_toBottomOf="@id/first_name_edt" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/genderTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="@string/gender_text"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:textColor="@color/about_content_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/sign_up_layout"
+                        app:layout_constraintTop_toBottomOf="@id/birthdayInputBox" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/genderTv">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="9dp"
+                            android:layout_marginLeft="9dp"
+                            android:onClick="@{() -> SignUpViewModel.onGenderOptionSelected('F')}"
+                            android:text="@string/female_gender_text"
+                            android:textColor="@android:color/darker_gray" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{() -> SignUpViewModel.onGenderOptionSelected('M')}"
+                            android:text="@string/male_gender_text"
+                            android:textColor="@android:color/darker_gray" />
+                    </RadioGroup>
+
+                    <FrameLayout
+                        android:id="@+id/agreeTermsField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/radioGroupBtn">
+
+                        <CheckBox
+                            android:id="@+id/checkbox_meat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="9dp"
+                            android:layout_marginLeft="9dp"
+                            android:onClick="@{() -> SignUpViewModel.onTermsPrivacyChecked()}"
+                            android:text="@string/terms_privacy_tv_text"
+                            android:textColor="@android:color/darker_gray" />
+                    </FrameLayout>
+
+                    <!-- sign up button -->
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:id="@+id/signUpButtonLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/button_round_colored"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/agreeTermsField"
+                        app:mrl_rippleColor="@color/colorPrimaryDark"
+                        app:mrl_rippleHover="true"
+                        app:mrl_rippleOverlay="true"
+                        app:mrl_rippleRoundedCorners="20dp">
+
+                        <Button
+                            android:id="@+id/signUpButton"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:text="@string/sign_up_button_text"
+                            android:textAllCaps="false"
+                            android:textColor="@color/color_button_text"
+                            android:textStyle="bold" />
+
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
+                    <ProgressBar
+                        android:id="@+id/loaderBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/agreeTermsField" />
+
+                    <TextView
+                        android:id="@+id/verifyAccountMessageTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/white"
+                        android:drawablePadding="16dp"
+                        android:fontFamily="@font/lato_medium"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="@string/verify_account_message_text"
+                        android:textAppearance="?android:textAppearanceSmall"
+                        android:textColor="@color/about_content_color"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+                        app:drawableStartCompat="@drawable/ic_message_48"
+                        app:layout_constraintTop_toBottomOf="@id/signUpButtonLayout" />
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:id="@+id/verifyAccountButtonLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/button_round"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/verifyAccountMessageTv"
+                        app:mrl_rippleColor="@color/colorPrimaryDark"
+                        app:mrl_rippleHover="true"
+                        app:mrl_rippleOverlay="true"
+                        app:mrl_rippleRoundedCorners="20dp">
+
+                        <Button
+                            android:id="@+id/verifyAccountButton"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:text="@string/verify_account_button_text"
+                            android:textAllCaps="false"
+                            android:textColor="@color/button_text_colored"
+                            android:textStyle="bold" />
+
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "202005186965",
+    "project_id": "africogram-5f4ac",
+    "storage_bucket": "africogram-5f4ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202005186965:android:3081ec64546e7d8c040e9c",
+        "android_client_info": {
+          "package_name": "com.africogram.www"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202005186965-notds3o0vu72vm78q8ouaesa0i1gkqp0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCf1VN-qHO4bBtI9fDDbtSHH1q9gV5xwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202005186965-notds3o0vu72vm78q8ouaesa0i1gkqp0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

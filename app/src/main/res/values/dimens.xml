@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_left_margin">16dp</dimen>
+    <dimen name="layout_right_margin">16dp</dimen>
+    <dimen name="sign_in_left_margin">16dp</dimen>
+    <dimen name="sign_in_right_margin">16dp</dimen>
+    <dimen name="sign_up_left_margin">16dp</dimen>
+    <dimen name="sign_up_right_margin">16dp</dimen>
+</resources>

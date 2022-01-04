@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <!-- Main Fragment -->
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.africogram.www.ui.fragments.MainFragment"
+        android:label="@string/app_name_label"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <!-- Sign In Fragment -->
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.africogram.www.ui.fragments.SignInFragment"
+        android:label="@string/sign_in_fragment_label"
+        tools:layout="@layout/sign_in_fragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <!-- Sign Up Fragment -->
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.africogram.www.ui.fragments.SignUpFragment"
+        android:label="@string/sign_up_fragment_label"
+        tools:layout="@layout/sign_up_fragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <!-- Settings Fragment -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.africogram.www.ui.fragments.SettingsFragment"
+        android:label="@string/settings_fragment_label"
+        tools:layout="@layout/settings_fragment" />
+</navigation>

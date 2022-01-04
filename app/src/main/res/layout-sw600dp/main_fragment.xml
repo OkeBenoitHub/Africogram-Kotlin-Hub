@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="MainViewModel"
+            type="com.africogram.www.viewmodels.MainViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg_app_color">
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/layout_left_margin"
+            android:paddingLeft="@dimen/layout_left_margin"
+            android:layout_gravity="center"
+            android:paddingEnd="@dimen/layout_right_margin"
+            android:paddingRight="@dimen/layout_right_margin"
+            android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ui.fragments.MainFragment">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- main header -->
+                <FrameLayout
+                    android:id="@+id/main_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@color/main_header_bg_color">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:fontFamily="@font/lato_heavy"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text="@string/main_app_header_text"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/content_header_color" />
+                    </androidx.cardview.widget.CardView>
+                </FrameLayout>
+
+                <!-- sign up button -->
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_round_colored"
+                    app:mrl_rippleColor="@color/colorPrimaryDark"
+                    app:mrl_rippleHover="true"
+                    app:mrl_rippleOverlay="true"
+                    app:mrl_rippleRoundedCorners="20dp">
+
+                    <Button
+                        android:id="@+id/signUpButton"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{() -> MainViewModel.onNavigateToSignUpFragment()}"
+                        android:text="@string/sign_up_button_text"
+                        android:textAllCaps="false"
+                        android:textColor="@color/color_button_text"
+                        android:textStyle="bold" />
+
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <RelativeLayout
+                    android:id="@+id/africa_map_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@android:color/white"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/africa_map"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/africa_map"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/semiHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/buttonsHeader">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:fontFamily="@font/lato_medium"
+                        android:padding="8dp"
+                        android:text="@string/africogram_helps_you_head_text"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@android:color/darker_gray" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/aboutApp1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/white"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/about_app1_text"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/about_content_color"
+                    android:textSize="15sp"
+                    app:drawableStartCompat="@drawable/ic_friends_48"
+                    app:layout_constraintTop_toBottomOf="@id/semiHead" />
+
+                <View
+                    android:id="@+id/separator1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/line_separator_bg_color"
+                    app:layout_constraintTop_toBottomOf="@id/aboutApp1" />
+
+                <TextView
+                    android:id="@+id/aboutApp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/white"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/about_app2_text"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/about_content_color"
+                    android:textSize="15sp"
+                    app:drawableStartCompat="@drawable/ic_chat_48"
+                    app:layout_constraintTop_toBottomOf="@id/separator1" />
+
+                <View
+                    android:id="@+id/separator2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/line_separator_bg_color"
+                    app:layout_constraintTop_toBottomOf="@id/aboutApp2" />
+
+                <TextView
+                    android:id="@+id/aboutApp3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/white"
+                    android:drawablePadding="16dp"
+                    android:fontFamily="@font/lato_medium"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/about_app3_text"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/about_content_color"
+                    android:textSize="15sp"
+                    app:drawableStartCompat="@drawable/ic_status_48"
+                    app:layout_constraintTop_toBottomOf="@id/separator2" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/line_separator_bg_color"
+                    app:layout_constraintTop_toBottomOf="@id/aboutApp3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    tools:text="Sign in layout here"
+                    tools:textSize="30sp" />
+
+                <FrameLayout
+                    android:id="@+id/sign_in_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

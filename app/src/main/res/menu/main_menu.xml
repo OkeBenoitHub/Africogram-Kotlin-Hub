@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/terms_service"
+        android:title="@string/terms_of_service_menu_text" />
+    <item
+        android:id="@+id/privacy_policy"
+        android:title="@string/privacy_menu_text" />
+    <item
+        android:id="@+id/share_app"
+        android:title="@string/share_app_menu_text" />
+</menu>
