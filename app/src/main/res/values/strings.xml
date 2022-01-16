@@ -78,4 +78,10 @@
     <string name="settings_menu_text">Settings</string>
     <string name="sign_out_menu_text">Sign out</string>
     <string name="settings_fragment_label">Settings</string>
+    <string name="feedback_menu_text">Feedback</string>
+    <string name="report_problem_menu_text">Report a Problem</string>
+    <string name="invite_friends_menu_text">Invite Friends</string>
+    <string name="submit_button_text">Submit</string>
+    <string name="feedback_hint_edt_text">Write your feedback</string>
+    <string name="feedback_fragment_head_text">Help us improve Africogram</string>
 </resources>

@@ -24,8 +24,13 @@
         <action
             android:id="@+id/action_mainFragment_to_settingsFragment"
             app:destination="@id/settingsFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_mainFragment_to_feedbackFragment"
+            app:destination="@id/feedbackFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
 
     <!-- Sign In Fragment -->
@@ -56,4 +61,10 @@
         android:name="com.africogram.www.ui.fragments.SettingsFragment"
         android:label="@string/settings_fragment_label"
         tools:layout="@layout/settings_fragment" />
+
+    <fragment
+        android:id="@+id/feedbackFragment"
+        android:name="com.africogram.www.ui.fragments.FeedbackFragment"
+        android:label="@string/feedback_menu_text"
+        tools:layout="@layout/feedback_fragment"/>
 </navigation>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.africogram.www.viewmodels.FeedbackViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg_app_color"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/layout_left_margin"
+        android:paddingLeft="@dimen/layout_left_margin"
+        android:paddingTop="16dp"
+        android:paddingEnd="@dimen/layout_right_margin"
+        android:paddingRight="@dimen/layout_right_margin"
+        tools:context=".ui.fragments.FeedbackFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@color/white"
+                    android:fontFamily="@font/lato_medium"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/feedback_fragment_head_text"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/feedback_area_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:padding="8dp"
+                    android:theme="@style/Theme.MaterialComponents.DayNight" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp">
+
+                    <EditText
+                        android:id="@+id/album_description_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="none"
+                        android:background="@color/white"
+                        android:fontFamily="@font/lato_medium"
+                        android:hint="@string/feedback_hint_edt_text"
+                        android:inputType="textMultiLine"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="8dp"
+                        android:textColor="@color/edit_text_color" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!-- Submit button -->
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_round"
+            app:mrl_rippleColor="@color/colorPrimaryDark"
+            app:mrl_rippleHover="true"
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleRoundedCorners="20dp">
+
+            <Button
+                android:id="@+id/submitFeedbackButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/submit_button_text"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+    </LinearLayout>
+</layout>

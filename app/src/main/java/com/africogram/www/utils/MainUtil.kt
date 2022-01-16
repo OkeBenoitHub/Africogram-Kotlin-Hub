@@ -89,10 +89,10 @@ class MainUtil {
      * @return new string with each word capitalized
      */
     fun capitalizeEachWordFromString(stringInput: String): String {
-        val strArray = stringInput.toLowerCase(Locale.getDefault()).split(" ".toRegex()).toTypedArray()
+        val strArray = stringInput.lowercase(Locale.getDefault()).split(" ".toRegex()).toTypedArray()
         val builder = StringBuilder()
         for (s in strArray) {
-            val cap = s.substring(0, 1).toUpperCase(Locale.getDefault()) + s.substring(1)
+            val cap = s.substring(0, 1).uppercase(Locale.getDefault()) + s.substring(1)
             builder.append(cap).append(" ")
         }
         return builder.toString()

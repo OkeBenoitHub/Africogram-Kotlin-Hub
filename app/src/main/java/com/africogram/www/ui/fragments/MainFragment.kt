@@ -1,5 +1,7 @@
 package com.africogram.www.ui.fragments
 
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -10,10 +12,14 @@ import com.africogram.www.R
 import com.africogram.www.databinding.MainFragmentBinding
 import com.africogram.www.firebase.FireAuthBase
 import com.africogram.www.utils.MainUtil
+import com.africogram.www.utils.PhotoUtil
 import com.africogram.www.viewmodels.MainViewModel
+import com.canhub.cropper.CropImageContract
+import com.canhub.cropper.CropImageView
+import com.canhub.cropper.options
 
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), PhotoUtil.CropPhotoCallBack {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var mainFragmentBinding: MainFragmentBinding
 
@@ -81,52 +87,93 @@ class MainFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
         // check for authentication
         if (!FireAuthBase(requireContext()).checkIfCurrentUserIsSignedIn()) {
-            // user not logged in
             inflater.inflate(R.menu.main_menu, menu)
         } else {
-            // user not logged in
             inflater.inflate(R.menu.home_menu, menu)
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            // terms of service
-            R.id.terms_service -> {
-                val termsOfServiceLink = getString(R.string.terms_service_link)
-                MainUtil().openWebPage(requireContext(), termsOfServiceLink)
+        // check for authentication
+        if (!FireAuthBase(requireContext()).checkIfCurrentUserIsSignedIn()) {
+            when (item.itemId) {
+                // terms of service
+                R.id.terms_service -> {
+                    val termsOfServiceLink = getString(R.string.terms_service_link)
+                    MainUtil().openWebPage(requireContext(), termsOfServiceLink)
+                }
+                // privacy policy
+                R.id.privacy_policy -> {
+                    val privacyPolicyLink = getString(R.string.privacy_policy_link)
+                    MainUtil().openWebPage(requireContext(), privacyPolicyLink)
+                }
+                // share app
+                R.id.share_app -> {
+                    var aboutAppMessage = getString(R.string.about_app_share_1)
+                    aboutAppMessage += "\n" + getString(R.string.about_app_share2)
+                    aboutAppMessage += "\n" + getString(R.string.app_store_link)
+                    MainUtil().shareTextData(
+                        requireContext(),
+                        getString(R.string.share_app_via_text),
+                        aboutAppMessage
+                    )
+                }
             }
-            // privacy policy
-            R.id.privacy_policy -> {
-                val privacyPolicyLink = getString(R.string.privacy_policy_link)
-                MainUtil().openWebPage(requireContext(), privacyPolicyLink)
-            }
-            // share app
-            R.id.share_app -> {
-                var aboutAppMessage = getString(R.string.about_app_share_1)
-                aboutAppMessage += "\n" + getString(R.string.about_app_share2)
-                aboutAppMessage += "\n" + getString(R.string.app_store_link)
-                MainUtil().shareTextData(
-                    requireContext(),
-                    getString(R.string.share_app_via_text),
-                    aboutAppMessage
-                )
-            }
-            // settings
-            R.id.settings -> {
-                // navigate to Settings fragment
-                this.findNavController().navigate(
-                    MainFragmentDirections.actionMainFragmentToSettingsFragment()
-                )
-            }
-            // sign out
-            R.id.signOut -> {
-                FireAuthBase(requireContext()).signUserOut()
-                requireActivity().finish()
-                startActivity(requireActivity().intent)
+        } else {
+            when (item.itemId) {
+                // feedback
+                R.id.feedback -> {
+                    // navigate to Feedback fragment
+                    this.findNavController().navigate(
+                        MainFragmentDirections.actionMainFragmentToFeedbackFragment()
+                    )
+                }
+                // report a problem
+                R.id.reportProblem -> {
+
+                }
+                // invite friends
+                R.id.inviteFriends -> {
+
+                }
+                // settings
+                R.id.settings -> {
+                    // navigate to Settings fragment
+                    this.findNavController().navigate(
+                        MainFragmentDirections.actionMainFragmentToSettingsFragment()
+                    )
+                }
+                // sign out
+                R.id.signOut -> {
+                    FireAuthBase(requireContext()).signUserOut()
+                    requireActivity().finish()
+                    startActivity(requireActivity().intent)
+                }
             }
         }
-
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCropPhotoFile(isProceed: Boolean, photoFileUri: Uri?) {
+        if (isProceed && photoFileUri != null) {
+            val cropImage = registerForActivityResult(CropImageContract()) { result ->
+                if (result.isSuccessful) {
+                    // use the returned uri
+                    val uriContent = result.uriContent
+                    val uriFilePath = result.getUriFilePath(requireContext()) // optional usage
+                } else {
+                    // an error occurred
+                    val exception = result.error
+                }
+            }
+            cropImage.launch(
+                options(uri = photoFileUri) {
+                    setGuidelines(CropImageView.Guidelines.ON)
+                    setOutputCompressFormat(Bitmap.CompressFormat.PNG)
+                }
+            )
+        } else {
+            MainUtil().showToastMessage(requireContext(),"Failed to crop photo")
+        }
     }
 }
